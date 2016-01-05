@@ -54,39 +54,28 @@ can take it from there. I've already changed enough to make this coin
 compile-able if you follow this guide. If you'd prefer to start with the
 original SmallChange code, it is here:
 <https://github.com/bfroemel/smallchange.git> or you could use the
-Litecoin, Franko, YAC, CHN, MIN, whatever source--we'll change enough of
-it to make it work.
+Litecoin, Franko, YAC, CHN, MIN, whatever source--we'll change enough of it to make it work.
 
 #### Set up a Github account
 
 Now would be a good time to come up with a brilliantly unique name for
 your new coin. You can visit <https://github.com/insertcoinnamehere> and
 check to see if your coin's name is available. If it's not, just add
--project or something witty and credibility boosting, maybe -nonprofit
-or -consortium would give your coin some gusto:
-
-[]( "wikilink")
+`-project` or something witty and credibility boosting, maybe -nonprofit
+or `-consortium` would give your coin some gusto:
 
 Hey, look, barcoin isn't taken--we'd better snatch it right up! Simply
 go to <https://github.com> and fill-in the blanks:
-
-[]( "wikilink")
 
 Now, lets make one of those sexy source code URL's that everyone can git
 pull from. What's git pull? Don't worry, you'll get the hang of
 it--look, you're learning new things already. In the upper right hand
 corner next to your username, click "Create Repository:"
 
-[]( "wikilink")
-
 Now fill in the blanks:
-
-[]( "wikilink")
 
 Click the green button and voila, you have Github. Now take note of this
 information:
-
-[]( "wikilink")
 
 Because we're going to come back to that. Better yet, Bookmark it in
 your browser and open a new tab.
@@ -94,7 +83,7 @@ your browser and open a new tab.
 #### Linux, Mac, Cygwin
 
 Yes, you need one of them. For this tutorial, I will be using a MacBook
-with OSX 10.8.something and a Debian Wheezy VPS. I suppose you can use
+with OSX `10.8.x` and a Debian Wheezy VPS. I suppose you can use
 Cygwin, but I prefer the \*nix's to Windows any day and you may as well
 learn one more thing too, right? Shoot, if you need a good LiveCD with
 the dependencies already built in that is set up to be run in a VMWare
@@ -105,8 +94,8 @@ XUbuntu, Mint).
 Setting up a PC or VM with Linux or OSX is outside the scope of this
 tutorial, but suffice to say I can vouch for VMWare and its ability to
 run multiple VMs simultaneously and its ability to virtualize OSX
-10.6.x. You will need to install some dependencies on which ever OS you
-choose to be able to build the daemon and -Qt wallet.
+`10.6.x`. You will need to install some dependencies on which ever OS you
+choose to be able to build the daemon and `-Qt` wallet.
 
 #### Dependencies for OSX
 
@@ -115,7 +104,7 @@ MacPorts or Homebrew. Personally, I like MacPorts better than Homebrew,
 but its simply because MacPorts installs in /opt (where I think it
 should go) and because MacPorts offers universal builds by default. If
 you prefer Homebrew, the formulas are the same, but I'd recommend
-building with the --32-bit flag. For the purpose of this tutorial, we're
+building with the `--32-bit` flag. For the purpose of this tutorial, we're
 going to use MacPorts.
 
 One needs to install the following dependencies:
@@ -131,36 +120,32 @@ One needs to install the following dependencies:
 After installation of the basic MacPorts for your version of OSX, this
 can be accomplished with this command:
 
-` %sudo port install boost db48 qt4-mac openssl miniupnpc git`
+`$ sudo port install boost db48 qt4-mac openssl miniupnpc git`
 
 Once all of the dependencies are built and installed, the next step is
 to clone the source from git. In this example, I will be cloning
 foocoin, rename it, re-git initialize it, and push the initial copy out
 to Github to ensure git is working:
 
-` %git clone `[`https://github.com/foocoin/foocoin.git`](https://github.com/foocoin/foocoin.git)\
-` cloning in to foocoin`\
-` %mv foocoin barcoin`\
-` %cd barcoin`\
-` %rm -rf .git`\
-` %git init`\
-` initializing git repository in ~/barcoin`\
-` %git add -A *`\
-` %git commit -m "first commit"`\
-` %git remote add origin `[`https://github.com/barcoin/barcoin.git`](https://github.com/barcoin/barcoin.git)\
-` %git push -u origin master`\
-` username for git@github.com: barcoin`\
-` password for barcoin@github.com: **********`
-
+```bash
+$ git clone https://github.com/foocoin/foocoin.git barcoin
+$ cd barcoin
+$ rm -rf .git
+$ git init
+$ git add -A *
+$ git commit -m "first commit"
+$ git remote add origin https://github.com/barcoin/barcoin.git
+$ git push -u origin master
+```
 Now what did we just do? We cloned the existing source, deleted its link
 to git, reinitialized the folder for Github, added all the existing
 folders and files in to the repository, committed our changes (made them
 permanent and put them in the "Master" branch, renamed it in to our new
-\*bigger \*better \*faster coin, set it back up to link to Github--but
-to the \*new\* coin's account, and pushed a copy out to Github. Now if
+*bigger better faster* coin, set it back up to link to Github--but
+to the **new** coin's account, and pushed a copy out to Github. Now if
 you go and look at your page it should look like so:
 
-[]( "wikilink")
+
 
 Oh, look at all that fresh source code just awaiting to be tweaked.
 
@@ -169,24 +154,23 @@ Oh, look at all that fresh source code just awaiting to be tweaked.
 On Debian based Linux, dependencies and build requirements can be
 installed in a single command like so:
 
-` $sudo apt-get install sudo apt-get install build-essential libboost-all-dev libcurl4-openssl-dev libdb5.1-dev libdb5.1++-dev git qt-sdk libminiupnpc-dev`
+```
+$ sudo apt-get install sudo apt-get install build-essential libboost-all-dev libcurl4-openssl-dev libdb5.1-dev libdb5.1++-dev git qt-sdk libminiupnpc-dev
+```
 
 This will install all the needed packages as apt is very smart. Once
 that's complete, the same bits as above should be applied:
 
-` $git clone `[`https://github.com/foocoin/foocoin.git`](https://github.com/foocoin/foocoin.git)\
-` cloning in to foocoin`\
-` $mv foocoin barcoin`\
-` $cd barcoin`\
-` $rm -rf .git`\
-` $git init`\
-` initializing git repository in ~/barcoin`\
-` $git add -A *`\
-` $git commit -m "first commit"`\
-` $git remote add origin `[`https://github.com/barcoin/barcoin.git`](https://github.com/barcoin/barcoin.git)\
-` $git push -u origin master`\
-` username for git@github.com: barcoin`\
-` password for barcoin@github.com: **********`
+```
+$ git clone https://github.com/foocoin/foocoin.git barcoin
+$ cd barcoin
+$ rm -rf .git
+$ git init
+$ git add -A *
+$ git commit -m "first commit"
+$ git remote add origin https://github.com/barcoin/barcoin.git
+$ git push -u origin master
+```
 
 #### Dependencies for Windows
 
@@ -208,7 +192,7 @@ Now you're ready to Cut and Paste!
 
 Ahh, now we've come to the creative part. The bit where you change the
 things you want to change to make your coin yours. As this is a
-\*cloning\* tutorial, I am not going to focus on the intricacies of
+**cloning** tutorial, I am not going to focus on the intricacies of
 programming (I'm not qualified). I'm simply going to show you where to
 make the changes you need to make to get a coin up and running. For this
 step, I really prefer TextWrangler on my Mac. It allows for multiple
@@ -256,7 +240,7 @@ one for P2P Connections. You can find a good list of reserved ports
 here: <http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers>
 Most any ports will work assuming they are 1: Over port 1024 and 2: not
 used by something else. I'd suggest something in the high numbers, good
-examples include 56679 and 56680 or 12365 and 12366.
+examples include `56679` and `56680` or `12365` and `12366`.
 
 For this example we're going to use 55883 for RPC and 55884 for P2P. In
 the foocoin sources, these ports are already set, so go ahead and modify
@@ -265,31 +249,33 @@ them using your text editor of choice.
 Change the RPC/P2P Port in the following files:
 
 **src/bitcoinrpc.cpp**: (RPC PORT)
+```
+LINE 2893:  ip::tcp::endpoint endpoint(bindAddress, GetArg("-rpcport", 55883));
 
-` LINE 2893:  ip::tcp::endpoint endpoint(bindAddress, GetArg("-rpcport", 55883));`\
-` LINE 3169:  if (!d.connect(GetArg("-rpcconnect", "127.0.0.1"), GetArg("-rpcport", "55883")))`
+LINE 3169:  if (!d.connect(GetArg("-rpcconnect", "127.0.0.1"), GetArg("-rpcport", "55883")))
+```
 
 **src/init.cpp**: (P2P PORT + Testnet Port)
 
-` LINE 235 "  -port=`<port>` " + _("Listen for connections on `<port>` (default: 55884 or testnet: 45884)") + "\n" +`
+` LINE 235 "  -port=`<port>` " + _("Listen for connections on `<port>` (default: 55884 or testnet: 45884)") + "\n" +`
 
 You can set the testnet port to any other random port, but remember what
 you set it to.
 
 **src/init.cpp**: (RPC PORT)
 
-` LINE 271 "  -rpcport=`<port>` " + _("Listen for JSON-RPC connections on `<port>` (default: 55883)") + "\n" +`
+` LINE 271 "  -rpcport=`<port>` " + _("Listen for JSON-RPC connections on `<port>` (default: 55883)") + "\n" +`
 
 **src/protocol.h**: (Testnet Port + P2P PORT)
 
-` LINE 22 return testnet ? 45883 : 55884;`
+` LINE 22 return testnet ? 45883 : 55884;`
 
 You can also set an initial "seed node" or always on system that the new
 coin wallets coming online will check for additional addresses:
 
 **src/net.cpp**:
 
-` LINE 1000  {"some website name", "somewebsite.org or ip x.x.x.x"},`
+` LINE 1000  {"some website name", "somewebsite.org or ip x.x.x.x"},`
 
 #### Coins Per Block/Block Intervals/Max Number of Coins
 
@@ -298,13 +284,13 @@ in the following files:
 
 **src/main.cpp**: (Number of coins per block awarded)
 
-` LINE 831 int64 nSubsidy = 1 * COIN;`
+` LINE 831 int64 nSubsidy = 1 * COIN;`
 
 **src/main.cpp**: (How \*should\* blocks be found and how often
 difficulty retargets)
 
-` LINE 837 static const int64 nTargetSpacing = 120; // FooCoin: 2 minute blocks`\
-` LINE 836 static const int64 nTargetTimespan = 1 * 24 * 60 * 60; // FooCoin: 1 days`
+` LINE 837 static const int64 nTargetSpacing = 120; // FooCoin: 2 minute blocks`\
+` LINE 836 static const int64 nTargetTimespan = 1 * 24 * 60 * 60; // FooCoin: 1 days`
 
 In this example, we want our coin to produce 1 coin blocks every 2
 minutes and readjust difficulty once per day (1 day x 24 hours x 60
@@ -316,8 +302,8 @@ This is tricky stuff and I don't quite understand all of it yet.
 **src/main.h**: (Total number of Coins ever and Estimated \# of Blocks
 per day)
 
-` LINE 43 static const int64 MAX_MONEY = 10000 * COIN; // maximum number of coins`\
-` LINE 550 return dPriority > COIN * 720 / 250; // 720 blocks found a day.`
+` LINE 43 static const int64 MAX_MONEY = 10000 * COIN; // maximum number of coins`\
+` LINE 550 return dPriority > COIN * 720 / 250; // 720 blocks found a day.`
 
 You'll need to do some math to figure out your blocks per day target
 based on how many coins you want to create over what timespan and how
@@ -335,7 +321,7 @@ address edit this:
 
 **src/base58.h**:
 
-` LINE 280 PUBKEY_ADDRESS = 38, //Set the address first bit here`
+` LINE 280 PUBKEY_ADDRESS = 38, //Set the address first bit here`
 
 #### Icons and Splash Images
 
@@ -375,20 +361,20 @@ This is set in two places in the code, one for the test net:
 
 **src/main.cpp**:
 
-` LINE 2023 block.nTime    = 1300000000;`
+` LINE 2023 block.nTime    = 1300000000;`
 
 and one for the main net:
 
 **src/main.cpp**:
 
-` LINE 2017 block.nTime    = 1300000000; //epochtime`
+` LINE 2017 block.nTime    = 1300000000; //epochtime`
 
 You can get the current epoch time from:
 <http://www.epochconverter.com/> or you can generate it from the command
 line of most \*nix systems with this code:
 
-` $ date +%s`\
-` $ 1369590088`
+` $ date +%s`\
+` $ 1369590088`
 
 It is customary to also change this line of code to a headline from the
 day of coin creation in order to relate it to the block.nTime with some
@@ -396,7 +382,7 @@ human-readable bit:
 
 **src/main.cpp**:
 
-` LINE 2005 const char* pszTimestamp = "Traditionally one puts something timely here coinciding with the epoch";`
+` LINE 2005 const char* pszTimestamp = "Traditionally one puts something timely here coinciding with the epoch";`
 
 Now, notice the other lines near the block.nTime, they are called
 block.nNonce. A 'nonce' is a unit of measurement that is unique and
@@ -414,9 +400,9 @@ gives us a method to generate the Merkel Hash via the coin's test net
 feature. Right now would be a good time to do the following and copy
 your files out to your Github repository:
 
-` barcoin% git add -A *`\
-` barcoin% git commit -m "changes"`\
-` barcoin% git push origin master`
+` barcoin% git add -A *`\
+` barcoin% git commit -m "changes"`\
+` barcoin% git push origin master`
 
 Doesn't it feel good to know you're using Github like a pro?
 
@@ -426,8 +412,8 @@ Now that you have a fresh copy with all of your cut and pasting uploaded
 to Github, we're ready to build a copy of our command line only version
 of the coin:
 
-` barcoin% cd src/`\
-` barcoin/src% make -f makefile.osx USE_UPNP=- (or makefile.unix if you're on Linux/BSD/etc)`
+` barcoin% cd src/`\
+` barcoin/src% make -f makefile.osx USE_UPNP=- (or makefile.unix if you're on Linux/BSD/etc)`
 
 The code should build cleanly if you've only changed what you're
 supposed to and you ahve the right dependencies installed. You'll end up
@@ -435,33 +421,33 @@ with a single executable called the name of your coin with a d on the
 end if you're on Linux (i.e. barcoin (osx/windows) barcoind (Linux).
 "Stripping" the extra code will create a smaller file if you so desire:
 
-` barcoin/src% strip barcoin (add the d on Linux, barcoind)`
+` barcoin/src% strip barcoin (add the d on Linux, barcoind)`
 
 Now, we want to run barcoin from the command line using the -testnet
 switch like so:
 
-` barcoin/src% ./barcoin -testnet (add the d on Linux, ./barcoind)`
+` barcoin/src% ./barcoin -testnet (add the d on Linux, ./barcoind)`
 
 It will immediately fail on first run, throwing out an error like so:
 
-` Assertion failed: (block.hashMerkleRoot == uint256("0x")), function LoadBlockIndex, file main.cpp, line 2031.`\
-` zsh: abort      ./barcoin`
+` Assertion failed: (block.hashMerkleRoot == uint256("0x")), function LoadBlockIndex, file main.cpp, line 2031.`\
+` zsh: abort      ./barcoin`
 
 We now have a Merkel hash...wait, but where? Its is in your coin's
 "Application Data" directory. On Linux, that's in your home folder, then
 a .coinname like:
 
-` ~./barcoin. `
+` ~./barcoin. `
 
 On OSX, it's going to be in your Library folder:
 
-` /Users/username/Library/Application Support/barcoin`
+` /Users/username/Library/Application Support/barcoin`
 
 If you want to see it graphically, hold the option button and click the
 Finder's Go menu, then choose Application Support and the barcoin
 folder. On Windows it will be in the Application Data Roaming folder:
 
-` c:\Users\username\AppData\Roaming\barcoin`
+` c:\Users\username\AppData\Roaming\barcoin`
 
 In this folder you'll find a few files--this is also the folder you'll
 put your coin's .conf file when we're ready to mine it so remember how
@@ -472,15 +458,15 @@ you got here. Now, open debug log and it will look like this:
 Thanks to tyrion's amazingly helpful post, we can decipher this debug
 out put as so:
 
-` b1753ec3845a48ddc4618bc595af6dc89dac328cd48f9f8db178df5dd3b302fc Block hashed using the non-existent Merkel, based on the pzTimestamp from main.cpp`\
-` 0000000000000000000000000000000000000000000000000000000000000000 Genesis block, no good because all the nNonces are set to 0 in main.cpp`\
-` 2fc1b7ef46270c053711fbae934cf7f83378efd4b3e158079451d9c6c90e4700 Valid Merkel Hash, generated using the epoch time in main.cpp`
+` b1753ec3845a48ddc4618bc595af6dc89dac328cd48f9f8db178df5dd3b302fc Block hashed using the non-existent Merkel, based on the pzTimestamp from main.cpp`\
+` 0000000000000000000000000000000000000000000000000000000000000000 Genesis block, no good because all the nNonces are set to 0 in main.cpp`\
+` 2fc1b7ef46270c053711fbae934cf7f83378efd4b3e158079451d9c6c90e4700 Valid Merkel Hash, generated using the epoch time in main.cpp`
 
 Now, take the valid Merkel Hash and insert it in to main.cpp:
 
 **src/main.cpp**
 
-` LINE 2031 assert(block.hashMerkleRoot == uint256("0x2fc1b7ef46270c053711fbae934cf7f83378efd4b3e158079451d9c6c90e4700"));`
+` LINE 2031 assert(block.hashMerkleRoot == uint256("0x2fc1b7ef46270c053711fbae934cf7f83378efd4b3e158079451d9c6c90e4700"));`
 
 ### Genesis Blocks
 
@@ -501,18 +487,18 @@ in place, this line:
 
 **src/main.cpp**
 
-` LINE 2034 if (true && block.GetHash() != hashGenesisBlock)`
+` LINE 2034 if (true && block.GetHash() != hashGenesisBlock)`
 
 if set to true (as above) will mine a genesis block upon the next time
 the program is run--beginning with the nNonce in the code (0). Let's
 recompile the code with the new Merkel Hash:
 
-` barcoin/src$ make -f makefile.osx USE_UPNP=- (or .unix, whatever)`
+` barcoin/src$ make -f makefile.osx USE_UPNP=- (or .unix, whatever)`
 
 Recompilation should be pretty quick as most of the files have already
 been built. Once its done, start it again using this command:
 
-` barcoin/src$ ./barcoin -testnet`
+` barcoin/src$ ./barcoin -testnet`
 
 You will hear your hard drive start to churn and it will seem like the
 coin has frozen in the window--but its not frozen, its mining a genesis
@@ -528,29 +514,29 @@ let it do its thing, and go get some runts-- eventually it will find one
 that it likes. This time it will write it in to the **testnet3** folder
 under your coin's conf folder in a file called **debug.log**:
 
-` Assertion failed: (block.GetHash() == hashGenesisBlock), function LoadBlockIndex, file main.cpp, line 2065.`\
-` zsh: abort      ./barcoin -testnet`
+` Assertion failed: (block.GetHash() == hashGenesisBlock), function LoadBlockIndex, file main.cpp, line 2065.`\
+` zsh: abort      ./barcoin -testnet`
 
 []( "wikilink")
 
 Ah ha! See it there? There's a noonce and a genesis block hash, ripe for
 the plucking!
 
-` block.nNonce = 440824 `\
-` block.GetHash = 5813d4cfab0eeda94a15d11c5e7d6895e667fbbe67c59ef9a1b3bc232c9a0b7f`
+` block.nNonce = 440824 `\
+` block.GetHash = 5813d4cfab0eeda94a15d11c5e7d6895e667fbbe67c59ef9a1b3bc232c9a0b7f`
 
 Now, put these in to the main.cpp file:
 
 **src/main.cpp**:
 
-` LINE 1984 hashGenesisBlock = uint256("0x5813d4cfab0eeda94a15d11c5e7d6895e667fbbe67c59ef9a1b3bc232c9a0b7f"); `
+` LINE 1984 hashGenesisBlock = uint256("0x5813d4cfab0eeda94a15d11c5e7d6895e667fbbe67c59ef9a1b3bc232c9a0b7f"); `
 
 Yes, you need to leave the 0x in front of the hashes. You also need to
 enter the nNonce:
 
 **src/main.cpp**:
 
-` LINE 2024 block.nNonce   = 440824;`
+` LINE 2024 block.nNonce   = 440824;`
 
 Note that the sections of the main.cpp file we just edited correspond to
 the testnet and we haven't done the main net quite yet. This is because
@@ -559,15 +545,15 @@ to make sure they can mine coins and then I move on to the main net.
 Lets save our changes, and upload them to Github and then we'll move on
 to mining on the testnet:
 
-` barcoin% git add -A *`\
-` barcoin% git commit -m "changes"`\
-` barcoin% git push origin master`
+` barcoin% git add -A *`\
+` barcoin% git commit -m "changes"`\
+` barcoin% git push origin master`
 
 #### Mining Testnet Coins
 
 First things first, rebuild your coin's executable on your local PC:
 
-` barcoin/src% make -f makefile.osx USE_UPNP=- (or .unix, whatever)`
+` barcoin/src% make -f makefile.osx USE_UPNP=- (or .unix, whatever)`
 
 Now comes the part where you need two computers with distinct IP
 addresses. I find this easy to do with a Linux VPS and my home PC, so
@@ -577,11 +563,11 @@ with the IP addresses. Connect to your second machine and build the
 coin's file just as we did before--since you sent the code to Github,
 may as well use your new elite github skillz:
 
-` $ git clone `[`https://github.com/barcoin/barcoin.git`](https://github.com/barcoin/barcoin.git)\
-` cloning in to barcoin`\
-` $ cd barcoin/src`\
-` barcoin/src$ make -f makefile.unix (I'm on Linux here).`\
-` barcoin/src$ strip barcoind`
+` $ git clone `[`https://github.com/barcoin/barcoin.git`](https://github.com/barcoin/barcoin.git)\
+` cloning in to barcoin`\
+` $ cd barcoin/src`\
+` barcoin/src$ make -f makefile.unix (I'm on Linux here).`\
+` barcoin/src$ strip barcoind`
 
 Now I'm ready to run it--in testnet mode and with a connection to my
 "other" computer. This is kind of tricky, because you need to start the
@@ -590,11 +576,11 @@ the IP of the other PC:
 
 **Home PC - iMac**:
 
-` barcoin/src% ./barcoin -testnet -connect=9.5.6.5 &`
+` barcoin/src% ./barcoin -testnet -connect=9.5.6.5 &`
 
 **VPS - Linux**:
 
-` barcoin/src$ ./barcoin -testnet -connect=66.77.32.56 &`
+` barcoin/src$ ./barcoin -testnet -connect=66.77.32.56 &`
 
 Add the & to the command will allow it to process in the background and
 allow you to continue to feed the coin commands without opening a second
@@ -602,14 +588,14 @@ console window.
 
 On the first run, it will complain about not having a .conf file:
 
-` error: You must set rpcpassword=`<password>` in the configuration file:`\
-` /Users/username/Library/Application Support/barcoin/barcoin.conf`\
-` If the file does not exist, create it with owner-readable-only file permissions.`\
-` It is recommended you use the following random password:`\
-` rpcuser=barcoinrpc`\
-` rpcpassword=6WgBVzyEBaFJodzyKt69y8VaQBagPSGD5kHptnYGwjt5`\
-` (you do not need to remember this password)`\
-` If the file does not exist, create it with owner-readable-only file permissions.`
+` error: You must set rpcpassword=`<password>` in the configuration file:`\
+` /Users/username/Library/Application Support/barcoin/barcoin.conf`\
+` If the file does not exist, create it with owner-readable-only file permissions.`\
+` It is recommended you use the following random password:`\
+` rpcuser=barcoinrpc`\
+` rpcpassword=6WgBVzyEBaFJodzyKt69y8VaQBagPSGD5kHptnYGwjt5`\
+` (you do not need to remember this password)`\
+` If the file does not exist, create it with owner-readable-only file permissions.`
 
 Create this file, in whatever format you prefer, nano works great for
 this and assign an RPC user/password. If you want to use
@@ -635,11 +621,11 @@ Now start the coin again:
 
 **Home PC - iMac**:
 
-` barcoin/src% ./barcoin -testnet -connect=9.5.6.5 &`
+` barcoin/src% ./barcoin -testnet -connect=9.5.6.5 &`
 
 **VPS - Linux**:
 
-` barcoin/src$ ./barcoin -testnet -connect=66.77.32.56 &`
+` barcoin/src$ ./barcoin -testnet -connect=66.77.32.56 &`
 
 Now's a good time to brush up on the command line API calls syntax for
 interacting with the bitcoin client from this wiki page:
@@ -647,29 +633,29 @@ interacting with the bitcoin client from this wiki page:
 
 First you'll want to send:
 
-` barcoin/src% ./barcoin getinfo`
+` barcoin/src% ./barcoin getinfo`
 
 It should return something like this:
 
 **Home PC - iMac**:
 
-` barcoin/src%./barcoin getinfo                         `\
-` {`\
-`     "version" : 1000000,`\
-`     "protocolversion" : 60001,`\
-`     "walletversion" : 60000,`\
-`     "balance" : 0.00000000,`\
-`     "blocks" : 0,`\
-`     "connections" : 1,`\
-`     "proxy" : "",`\
-`     "difficulty" : 0.00024414,`\
-`     "testnet" : true,`\
-`     "keypoololdest" : 1369621665,`\
-`     "keypoolsize" : 101,`\
-`     "paytxfee" : 0.00000000,`\
-`     "mininput" : 0.00010000,`\
-`     "errors" : ""`\
-`   }`
+` barcoin/src%./barcoin getinfo                         `\
+` {`\
+`     "version" : 1000000,`\
+`     "protocolversion" : 60001,`\
+`     "walletversion" : 60000,`\
+`     "balance" : 0.00000000,`\
+`     "blocks" : 0,`\
+`     "connections" : 1,`\
+`     "proxy" : "",`\
+`     "difficulty" : 0.00024414,`\
+`     "testnet" : true,`\
+`     "keypoololdest" : 1369621665,`\
+`     "keypoolsize" : 101,`\
+`     "paytxfee" : 0.00000000,`\
+`     "mininput" : 0.00010000,`\
+`     "errors" : ""`\
+`   }`
 
 The other side should look the same and the numbers should match. Note
 that testnet doesn't verify checkpoints, so they should connect pretty
@@ -678,91 +664,91 @@ other side:
 
 **VPS - Linux**
 
-` /barcoin/src$./barcoind getinfo`\
-` {`\
-`     "version" : 1000000,`\
-`     "protocolversion" : 60001,`\
-`     "walletversion" : 60000,`\
-`     "balance" : 0.00000000,`\
-`     "blocks" : 0,`\
-`     "connections" : 1,`\
-`     "proxy" : "",`\
-`     "difficulty" : 0.00024414,`\
-`     "testnet" : true,`\
-`     "keypoololdest" : 1369622277,`\
-`     "keypoolsize" : 101,`\
-`     "paytxfee" : 0.00000000,`\
-`     "mininput" : 0.00010000,`\
-`     "errors" : ""`\
-` }`
+` /barcoin/src$./barcoind getinfo`\
+` {`\
+`     "version" : 1000000,`\
+`     "protocolversion" : 60001,`\
+`     "walletversion" : 60000,`\
+`     "balance" : 0.00000000,`\
+`     "blocks" : 0,`\
+`     "connections" : 1,`\
+`     "proxy" : "",`\
+`     "difficulty" : 0.00024414,`\
+`     "testnet" : true,`\
+`     "keypoololdest" : 1369622277,`\
+`     "keypoolsize" : 101,`\
+`     "paytxfee" : 0.00000000,`\
+`     "mininput" : 0.00010000,`\
+`     "errors" : ""`\
+` }`
 
 Lovely, they line up and each have a single connection. Now we can make
 one of them (or both) begin generating coins by using the following
 command:
 
-` barcoin/src% ./barcoin setgenerate true 16`
+` barcoin/src% ./barcoin setgenerate true 16`
 
 The number is how many threads of your processor you want to devote, at
 the insanely low difficulty we're starting out with, this should be
 plenty to generate a few blocks. You won't see the results in real time,
 rather you'll need to issue the following command and evaluate the info:
 
-` barcoin/src% ./barcoin getmininginfo`\
-` {`\
-`     "blocks" : 0,`\
-`     "currentblocksize" : 1000,`\
-`     "currentblocktx" : 0,`\
-`     "difficulty" : 0.00024414,`\
-`     "errors" : "",`\
-`     "generate" : true,`\
-`     "genproclimit" : 16,`\
-`     "hashespersec" : 1432,`\
-`     "networkhashps" : -9223372036854775808,`\
-`     "pooledtx" : 0,`\
-`     "testnet" : true`\
-` }`
+` barcoin/src% ./barcoin getmininginfo`\
+` {`\
+`     "blocks" : 0,`\
+`     "currentblocksize" : 1000,`\
+`     "currentblocktx" : 0,`\
+`     "difficulty" : 0.00024414,`\
+`     "errors" : "",`\
+`     "generate" : true,`\
+`     "genproclimit" : 16,`\
+`     "hashespersec" : 1432,`\
+`     "networkhashps" : -9223372036854775808,`\
+`     "pooledtx" : 0,`\
+`     "testnet" : true`\
+` }`
 
 Success! See that **hashespersec**? The internal scrypt miner is now
 doing its thing and making you some blocks. You'll have to issue the
 getmininginfo command a few times before it starts to count up in the
 block count. In just a few minutes you should be able to see:
 
-` barcoin/src$./barcoind getmininginfo`\
-` {`\
-`     "blocks" : 1,`\
-`     "currentblocksize" : 1000,`\
-`     "currentblocktx" : 0,`\
-`     "difficulty" : 0.00024414,`\
-`     "errors" : "",`\
-`     "generate" : true,`\
-`     "genproclimit" : 16,`\
-`     "hashespersec" : 1376,`\
-`     "networkhashps" : 32,`\
-`     "pooledtx" : 0,`\
-`     "testnet" : true`\
-` }`
+` barcoin/src$./barcoind getmininginfo`\
+` {`\
+`     "blocks" : 1,`\
+`     "currentblocksize" : 1000,`\
+`     "currentblocktx" : 0,`\
+`     "difficulty" : 0.00024414,`\
+`     "errors" : "",`\
+`     "generate" : true,`\
+`     "genproclimit" : 16,`\
+`     "hashespersec" : 1376,`\
+`     "networkhashps" : 32,`\
+`     "pooledtx" : 0,`\
+`     "testnet" : true`\
+` }`
 
 Woah doggie, we have blocks. Now verify that your other sees the blocks
 by doing a getinfo on your **other** computer:
 
 barcoin/src%./barcoin getinfo
 
-` {`\
-`     "version" : 1000000,`\
-`     "protocolversion" : 60001,`\
-`     "walletversion" : 60000,`\
-`     "balance" : 0.00000000,`\
-`     "blocks" : 1,`\
-`     "connections" : 1,`\
-`     "proxy" : "",`\
-`     "difficulty" : 0.00024414,`\
-`     "testnet" : true,`\
-`     "keypoololdest" : 1369621665,`\
-`     "keypoolsize" : 101,`\
-`     "paytxfee" : 0.00000000,`\
-`     "mininput" : 0.00010000,`\
-`     "errors" : ""`\
-` }`
+` {`\
+`     "version" : 1000000,`\
+`     "protocolversion" : 60001,`\
+`     "walletversion" : 60000,`\
+`     "balance" : 0.00000000,`\
+`     "blocks" : 1,`\
+`     "connections" : 1,`\
+`     "proxy" : "",`\
+`     "difficulty" : 0.00024414,`\
+`     "testnet" : true,`\
+`     "keypoololdest" : 1369621665,`\
+`     "keypoolsize" : 101,`\
+`     "paytxfee" : 0.00000000,`\
+`     "mininput" : 0.00010000,`\
+`     "errors" : ""`\
+` }`
 
 Well, whatta ya know? Whatta ya say we mine some mainnet coins?
 
@@ -773,23 +759,22 @@ time, in the main net section this time and mine a genesis block the
 similarly to the way we did it on testnet. First, stop the coind from
 running on both your local and remote computers by issuing the command:
 
-` barcoin/src% ./barcoind stop`\
-` Barcoin is stopping`
+`$ ./barcoind stop`
 
 Next, go back to your development PC and edit main.cpp with a new
 block.nTime:
 
 **src/main.cpp**:
 
-` LINE 2017 block.nTime    = 1369623856; //epochtime`
+`LINE 2017 block.nTime    = 1369623856; // Epoch time`
 
 Now, recompile the coin again from the command line:
 
-` barcoin/src% make -f makefile.osx USE_UPNP=- (or .unix, whatever, ha!)`
+`$ make -f makefile.osx USE_UPNP=- (or .unix, whatever, ha!)`
 
 Now run the coin again, but this time don't include the -testnet switch:
 
-` barcoin/src% ./barcoin &`
+`$ ./barcoin &`
 
 It will again seem to be frozen while it mines the genesis block and
 your processor will likely go to 100% utilization. Be patient, this took
@@ -803,9 +788,11 @@ changes to main.cpp:
 
 **src/main.cpp**:
 
-` LINE 32 uint256 hashGenesisBlock("0xbf9385c680c3a7aec778b6dcf87dbfb105369d55143fc99ebe86f469cd53ddca");`\
-` LINE 2019 block.nNonce   = 1345972;`\
-` LINE 2034 if (false && block.GetHash() != hashGenesisBlock)`
+```
+LINE 32 uint256 hashGenesisBlock("0xbf9385c680c3a7aec778b6dcf87dbfb105369d55143fc99ebe86f469cd53ddca");
+LINE 2019 block.nNonce   = 1345972;
+LINE 2034 if (false && block.GetHash() != hashGenesisBlock)
+```
 
 #### Checkpoints
 
@@ -814,7 +801,9 @@ own genesis block should something be awry. One more file to change:
 
 **src/checkpoints.cpp**
 
-` LINE 27 (         0, uint256("0xbf9385c680c3a7aec778b6dcf87dbfb105369d55143fc99ebe86f469cd53ddca"))`
+```
+LINE 27 (         0, uint256("0xbf9385c680c3a7aec778b6dcf87dbfb105369d55143fc99ebe86f469cd53ddca"))
+```
 
 This is the "trick." Remember I said, there was a trick? This is it.
 Hash 0 in this file needs to be set to the genesis block hash, so do it
@@ -824,24 +813,29 @@ the future and add other checkpoints in to it--but that's a bit we'll
 save for the end of the guide. Lets send our changes to Github before we
 build:
 
-` barcoin% git add -A *`\
-` barcoin% git commit -m "changes"`\
-` barcoin% git push origin master`
+```
+`$ git add -A *
+`$ git commit -m "changes"
+`$ git push origin master
+```
 
 Ok, we're ready to rebuild on the first pc:
 
-` barcoin% cd src/`\
-` barcoin/src% make -f makefile.osx USE_UPNP=- (or .unix, blah...)`\
-` strip barcoin`
+```
+barcoin% cd src/
+barcoin/src% make -f makefile.osx USE_UPNP=- # or unix!
+strip barcoin
+```
 
 Now on the second pc (assuming its Linux here):
 
-` ~$ cd barcoin`\
-` barcoin$ git pull`\
-` updating git...wait wait...done!`\
-` barcoin$ cd src/`\
-` barcoin/src$ make -f makefile.unix USE_UPNP=-`\
-` strip barcoind`
+```
+$ cd barcoin
+$ git pull
+$ cd src/
+$ make -f makefile.unix USE_UPNP=-
+strip barcoind`
+```
 
 Ooo laa laa, we're done here. Now we can mine us some coinz!
 
@@ -852,54 +846,57 @@ switch. Start'er up:
 
 **Home PC - iMac**:
 
-` barcoin/src% ./barcoin -connect=9.5.6.5 &`
+`$ ./barcoin -connect=9.5.6.5 &`
 
 **VPS - Linux**:
 
-` barcoin/src$ ./barcoin -connect=66.77.32.56 &`
+`$ ./barcoin -connect=66.77.32.56 &`
 
 Verify with getinfo:
 
-` barcoin/src%./barcoind getinfo                    `\
-` {`\
-`     "version" : 1000000,`\
-`     "protocolversion" : 60001,`\
-`     "walletversion" : 60000,`\
-`     "balance" : 0.00000000,`\
-`     "blocks" : 0,`\
-`     "connections" : 1,`\
-`     "proxy" : "",`\
-`     "difficulty" : 0.00024414,`\
-`     "testnet" : false,`\
-`     "keypoololdest" : 1369627515,`\
-`     "keypoolsize" : 101,`\
-`     "paytxfee" : 0.00000000,`\
-`     "mininput" : 0.00010000,`\
-`     "errors" : ""`\
-` }`
+```
+$ ./barcoind getinfo                    
+{
+     "version" : 1000000,
+     "protocolversion" : 60001,
+     "walletversion" : 60000,
+     "balance" : 0.00000000,
+     "blocks" : 0,
+     "connections" : 1,
+     "proxy" : "",
+     "difficulty" : 0.00024414,
+     "testnet" : false,
+     "keypoololdest" : 1369627515,
+     "keypoolsize" : 101,
+     "paytxfee" : 0.00000000,
+     "mininput" : 0.00010000,
+     "errors" : ""
+}
+```
 
 Get a new address:
 
-` barcoin getnewaddress`\
-` GeeNLCk9KfQQ35wPpf2faYdqHEU5KW4Khn`
+`barcoin getnewaddress`
 
 Start one of them (or both of them mining) and verify it:
 
-` barcoin/src%./barcoind setgenerate true 16`\
-` barcoin/src%./barcoind getmininginfo`\
-` {`\
-`     "blocks" : 0,`\
-`     "currentblocksize" : 1000,`\
-`     "currentblocktx" : 0,`\
-`     "difficulty" : 0.00024414,`\
-`     "errors" : "",`\
-`     "generate" : true,`\
-`     "genproclimit" : 16,`\
-`     "hashespersec" : 1417,`\
-`     "networkhashps" : -9223372036854775808,`\
-`     "pooledtx" : 0,`\
-`     "testnet" : false`\
-` }`
+```
+$ ./barcoind setgenerate true 16
+$ ./barcoind getmininginfo
+{
+     "blocks" : 0,
+     "currentblocksize" : 1000,
+     "currentblocktx" : 0,
+     "difficulty" : 0.00024414,
+     "errors" : "",
+     "generate" : true,
+     "genproclimit" : 16,
+     "hashespersec" : 1417,
+     "networkhashps" : -9223372036854775808,
+     "pooledtx" : 0,
+     "testnet" : false
+ }
+```
 
 Ooooooh myyyyyy gooooooooood, right? Its making blocks of our new
 Barcoin (or is it a BAR to consolidate your digital wealth? I mean,
@@ -948,29 +945,33 @@ Next, I installed MacPorts this version:
 <https://distfiles.macports.org/MacPorts/MacPorts-2.1.3-10.6-SnowLeopard.pkg>
 and then the dependencies listed in the first section ala:
 
-`  xcode%sudo port install boost db48 qt4-mac openssl miniupnpc git`
+`$ sudo port install boost db48 qt4-mac openssl miniupnpc git`
 
 After a bit of time, all goodies are installed so we'll clone the coin's
 software in the regular fashion:
 
-` xcode% git clone `[`https://github.com/barcoin/barcoin.conf`](https://github.com/barcoin/barcoin.conf)\
-` xcode% cd barcoin`
+```
+$ git clone https://github.com/barcoin/barcoin.conf
+$ cd barcoin
+```
 
 Now, something a tad different this time, we need to run qmake instead
 of make. Do that like so:
 
-` barcoin% qmake "USE_UPNP=-" barcoin-qt.pro`
+`$ qmake "USE_UPNP=-" barcoin-qt.pro`
 
 Yes, you need the " " around USE\_UPNP=- and yes, this may produce some
 strange looking results, something like this:
 
-` Project MESSAGE: Building without UPNP support`\
-` Removed plural forms as the target language has less forms.`\
-` If this sounds wrong, possibly the target language is not set or recognized.`
+```
+Project MESSAGE: Building without UPNP support
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+```
 
 Now, lets build it:
 
-` barcoin% make -f Makefile`
+`$ make -f Makefile`
 
 Go, go, go, do not look back. After a bit you'll see it finish and an
 icon should appear in the barcoin folder:
@@ -982,7 +983,7 @@ Now launch that and voila! A Mac barcoin wallet:
 []( "wikilink")
 
 Just like the Windows and Linux wallets, you may want to add
-**addnode=x.x.x.x** where the x.x.x.x is the IP of your seed node. This
+`addnode=x.x.x.x` where the `x.x.x.x` is the IP of your seed node. This
 won't be needed after a few clients begin connecting to the network,
 eventually they will begin talking to each other via IRC.
 
@@ -1000,19 +1001,22 @@ the first bit--wait, you didn't? You did it all on Windows? Nice. You
 should write a guide next time! Now, where were we...oh yes, you already
 have a working coin building system, so lets just stick with it. First
 things first:
-
-` cd ~/barcoin`\
-` barcoin% qmake "USE_UPNP=-"`
+```
+cd ~/barcoin
+barcoin% qmake "USE_UPNP=-"
+```
 
 Thinking, thinking, output:
 
-` Project MESSAGE: Building without UPNP support`\
-` Removed plural forms as the target language has less forms.`\
-` If this sounds wrong, possibly the target language is not set or recognized.`
+```
+Project MESSAGE: Building without UPNP support 
+Removed plural forms as the target language has less forms.
+If this sounds wrong, possibly the target language is not set or recognized.
+```
 
 Now, build it:
 
-` barcoin$ make`
+`$ make`
 
 Yeah, seriously, that's it. Just 'make.' Ha--Debian is so beautiful, is
 it not? Ok now after a bit of churning and burning it will finish.
@@ -1051,8 +1055,10 @@ basically have a Linux prompt:
 
 Now make a /c/deps folder to keep our files in:
 
-` $mkdir /c/deps`\
-` $cd /c/deps`
+```
+$ mkdir /c/deps
+$ cd /c/deps
+```
 
 Now download the following files and put them in C:\\Deps:
 
@@ -1060,27 +1066,33 @@ Now download the following files and put them in C:\\Deps:
 
 Install it like so:
 
-` /c/deps$ tar xvfz openssl-1.0.1e.tar.gz`\
-` /c/deps$ cd openssl-1.0.1e`\
-` /c/deps$ ./config`\
-` /c/deps$ make`
+```
+$ tar xvfz openssl-1.0.1e.tar.gz
+$ cd openssl-1.0.1e
+$ ./config
+$ make
+```
 
 -   Berkeley DB 4.8:
     <http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz>
 
 Install it like so:
 
-` /c/deps$ tar xvfz db-4.8.30.NC.tar.gz`\
-` /c/deps$ cd db-4.8.30.NC/build_unix`\
-` /c/deps$ ../dist/configure --disable-replication --enable-mingw --enable-cxx`
+```
+$ tar xvfz db-4.8.30.NC.tar.gz
+$ cd db-4.8.30.NC/build_unix
+$ ../dist/configure --disable-replication --enable-mingw --enable-cxx
+```
 
 -   Boost: <http://sourceforge.net/projects/boost/files/boost/1.53.0/>
 
 For this one, open a regular command (CMD) window and do the following:
 
-` cd \deps\boost-1.53.0\`\
-` bootstrap.bat mingw`\
-` b2 --build-type=complete --with-chrono --with-filesystem --with-program_options --with-system --with-thread toolset=gcc stage`
+```
+cd \deps\boost-1.53.0\
+bootstrap.bat mingw
+b2 --build-type=complete --with-chrono --with-filesystem --with-program_options --with-system --with-thread toolset=gcc stage
+```
 
 For simplicity's sake, my versions are simply named deps\\boost;
 deps\\ssl; etc. If you build your own, either rename the folders in
@@ -1114,28 +1126,32 @@ correct ordering for some of the syntax:
 
 **barcoin/barcoin-qt.pro**:
 
-` LINES 11-22, UNCOMMENT ALL OF THESE TO ENABLE WINDOWS BUILDS:`\
-` #windows:LIBS += -lshlwapi`\
-` #LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)`\
-` #LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX`\
-` #windows:LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32`\
-` #LIBS += -lboost_system-mgw46-mt-sd-1_53 -lboost_filesystem-mgw46-mt-sd-1_53 -lboost_program_options-mgw46-mt-sd-1_53 -lboost_thread-mgw46-mt-sd-1_53`\
-` #BOOST_LIB_SUFFIX=-mgw46-mt-sd-1_53`\
-` #BOOST_INCLUDE_PATH=C:/deps/boost`\
-` #BOOST_LIB_PATH=C:/deps/boost/stage/lib`\
-` #BDB_INCLUDE_PATH=c:/deps/db/build_unix`\
-` #BDB_LIB_PATH=c:/deps/db/build_unix`\
-` #OPENSSL_INCLUDE_PATH=c:/deps/ssl/include`\
-` #OPENSSL_LIB_PATH=c:/deps/ssl`
+```
+LINES 11-22, UNCOMMENT ALL OF THESE TO ENABLE WINDOWS BUILDS:
+#windows:LIBS += -lshlwapi
+#LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
+#LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
+#windows:LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
+#LIBS += -lboost_system-mgw46-mt-sd-1_53 -lboost_filesystem-mgw46-mt-sd-1_53 -lboost_program_options-mgw46-mt-sd-1_53 -lboost_thread-mgw46-mt-sd-1_53
+#BOOST_LIB_SUFFIX=-mgw46-mt-sd-1_53
+#BOOST_INCLUDE_PATH=C:/deps/boost
+#BOOST_LIB_PATH=C:/deps/boost/stage/lib
+#BDB_INCLUDE_PATH=c:/deps/db/build_unix
+#BDB_LIB_PATH=c:/deps/db/build_unix
+#OPENSSL_INCLUDE_PATH=c:/deps/ssl/include
+#OPENSSL_LIB_PATH=c:/deps/ssl
+```
 
-IF YOU BUILT YOUR OWN dependencies, then also change the paths in the
+**IF YOU BUILT YOUR OWN** dependencies, then also change the paths in the
 file above to suit their locations, use / instead of \\, yea--its odd.
 Now go back to your Qt Command Shell window and build the same way we
 built on the other platforms:
 
-` c:\Qt-Builder> cd \barcoin-master\src`\
-` c:\barcoin-master\src> qmake "USE_UPNP=- barcoin-qt.pro`\
-` c:\barcoin-master\src> make -f Makefile.Release`
+```
+c:\Qt-Builder> cd \barcoin-master\src
+c:\barcoin-master\src> qmake "USE_UPNP=- barcoin-qt.pro
+c:\barcoin-master\src> make -f Makefile.Release
+```
 
 Wait for a bit...and once its done, you'll find a folder called
 "release" under the main barcoin-master folder containing the .exe and a
@@ -1160,15 +1176,11 @@ can now run the .exe file on Windows:
 Woah, hey look at that, we already have a balance! Actually, I'd sent
 the 10 BAR to this computer from the one I left mining all night. If you
 don't have many connections to the network, you may need to add a line
-like so to your %appdata%\\barcoin\\barcoin.conf:
+like so to your `%appdata%\barcoin\barcoin.conf`:
 
-` addnode=IP ADDRESS OF YOUR SEED NODE`
+` addnode=IP_ADDRESS_OF_YOUR_SEED_NODE`
 
 If you created a seed node, it should connect but if not, simply add a
 node. Once a few clients begin connecting they will use IRC to connect
 to each other, so the addnode should only be needed for the initial
 wallet connections.
-
-### Additional Things to Customize
-
-<category:Cryptocurrency>
